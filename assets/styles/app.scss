@@ -1,0 +1,11 @@
+// customize some Bootstrap variables
+
+$primary: #092035;
+
+
+// the ~ allows you to reference things in node_modules
+@use "~bootstrap/scss/bootstrap";
+@use "./custom";
+@use "./formulaire";
+@use "./custom-checkbox.scss"
+
