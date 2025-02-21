@@ -77,7 +77,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function __tostring()
     {
-        return $this->fullname ?? 'Unknown';
+        return $this->username ?? 'Unknown';
     }
 
     public function getId(): ?int

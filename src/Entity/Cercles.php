@@ -14,9 +14,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ORM\Entity(repositoryClass: CerclesRepository::class)]
 class Cercles
 {
-    use CreatedAtTrait;
-    use SlugTrait;
-    use EntityTrackingTrait;
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]

@@ -139,6 +139,11 @@ class FraisScolarites
         $this->caisses = new ArrayCollection();
     }
 
+    public function __tostring()
+    {
+        return $this->fraisTypes ?? '';
+    }
+
     public function getId(): ?int
     {
         return $this->id;

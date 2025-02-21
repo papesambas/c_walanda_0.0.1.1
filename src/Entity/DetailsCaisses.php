@@ -12,8 +12,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ORM\Entity(repositoryClass: DetailsCaissesRepository::class)]
 class DetailsCaisses
 {
-    use CreatedAtTrait;
-    use EntityTrackingTrait;
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]

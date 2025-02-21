@@ -22,6 +22,11 @@ class Telephones2
     #[ORM\Column(length: 23)]
     private ?string $numero = null;
 
+    public function __tostring()
+    {
+        return $this-> numero ?? '';
+    }
+
     public function getId(): ?int
     {
         return $this->id;

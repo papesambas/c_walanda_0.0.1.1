@@ -34,6 +34,11 @@ class Parents
         $this->eleves = new ArrayCollection();
     }
 
+    public function __tostring()
+    {
+        return $this-> pere.' & '.$this-> meres ?? '';
+    }
+
     public function getId(): ?int
     {
         return $this->id;

@@ -29,10 +29,6 @@ class Meres
 
     #[ORM\OneToOne(inversedBy: 'meres', cascade: ['persist', 'remove'], fetch: "LAZY")]
     #[ORM\JoinColumn(nullable: false,referencedColumnName: 'id',)]
-    private ?Ninas $nina = null;
-
-    #[ORM\OneToOne(inversedBy: 'meres', cascade: ['persist', 'remove'], fetch: "LAZY")]
-    #[ORM\JoinColumn(nullable: false,referencedColumnName: 'id',)]
     private ?telephones1 $telephone1 = null;
 
     #[ORM\OneToOne(inversedBy: 'meres', cascade: ['persist', 'remove'], fetch: "LAZY")]
@@ -48,9 +44,17 @@ class Meres
     #[ORM\OneToMany(targetEntity: Parents::class, mappedBy: 'meres')]
     private Collection $parent;
 
+    #[ORM\OneToOne(inversedBy: 'meres', cascade: ['persist', 'remove'])]
+    private ?Ninas $nina = null;
+
     public function __construct()
     {
         $this->parent = new ArrayCollection();
+    }
+
+    public function __tostring()
+    {
+        return $this-> fullname ?? '';
     }
 
     public function getId(): ?int
@@ -90,18 +94,6 @@ class Meres
     public function setProfession(?Professions $profession): static
     {
         $this->profession = $profession;
-
-        return $this;
-    }
-
-    public function getNina(): ?Ninas
-    {
-        return $this->nina;
-    }
-
-    public function setNina(?Ninas $nina): static
-    {
-        $this->nina = $nina;
 
         return $this;
     }
@@ -168,6 +160,18 @@ class Meres
                 $parent->setMeres(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getNina(): ?Ninas
+    {
+        return $this->nina;
+    }
+
+    public function setNina(?Ninas $nina): static
+    {
+        $this->nina = $nina;
 
         return $this;
     }

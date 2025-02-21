@@ -13,9 +13,6 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: DepartementsRepository::class)]
 class Departements
 {
-    use CreatedAtTrait;
-    use SlugTrait;
-    use EntityTrackingTrait;
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]

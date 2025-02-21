@@ -29,6 +29,11 @@ class Santes
     #[ORM\JoinColumn(nullable: false,referencedColumnName: 'id',)]
     private ?Eleves $eleve = null;
 
+    public function __tostring()
+    {
+        return $this-> maladie ?? '';
+    }
+
     public function getId(): ?int
     {
         return $this->id;

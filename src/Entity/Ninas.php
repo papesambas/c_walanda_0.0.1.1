@@ -13,19 +13,57 @@ class Ninas
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\OneToOne(mappedBy: 'nina', cascade: ['persist', 'remove'])]
-    private ?Meres $meres = null;
-
     #[ORM\Column(length: 15)]
     private ?string $designation = null;
 
-    #[ORM\OneToOne(inversedBy: 'ninas', cascade: ['persist', 'remove'], fetch: "LAZY")]
-    #[ORM\JoinColumn(nullable: false,referencedColumnName: 'id',)]
+    #[ORM\OneToOne(mappedBy: 'nina', cascade: ['persist', 'remove'])]
     private ?Peres $peres = null;
+
+    #[ORM\OneToOne(mappedBy: 'nina', cascade: ['persist', 'remove'])]
+    private ?Meres $meres = null;
+
+    public function __tostring()
+    {
+        return $this-> designation ?? '';
+    }
 
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getDesignation(): ?string
+    {
+        return $this->designation;
+    }
+
+    public function setDesignation(string $designation): static
+    {
+        $this->designation = $designation;
+
+        return $this;
+    }
+
+    public function getPeres(): ?Peres
+    {
+        return $this->peres;
+    }
+
+    public function setPeres(?Peres $peres): static
+    {
+        // unset the owning side of the relation if necessary
+        if ($peres === null && $this->peres !== null) {
+            $this->peres->setNina(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($peres !== null && $peres->getNina() !== $this) {
+            $peres->setNina($this);
+        }
+
+        $this->peres = $peres;
+
+        return $this;
     }
 
     public function getMeres(): ?Meres
@@ -50,27 +88,4 @@ class Ninas
         return $this;
     }
 
-    public function getDesignation(): ?string
-    {
-        return $this->designation;
-    }
-
-    public function setDesignation(string $designation): static
-    {
-        $this->designation = $designation;
-
-        return $this;
-    }
-
-    public function getPeres(): ?Peres
-    {
-        return $this->peres;
-    }
-
-    public function setPeres(?Peres $peres): static
-    {
-        $this->peres = $peres;
-
-        return $this;
-    }
 }

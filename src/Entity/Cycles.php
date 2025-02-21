@@ -14,9 +14,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ORM\Entity(repositoryClass: CyclesRepository::class)]
 class Cycles
 {
-    use CreatedAtTrait;
-    use SlugTrait;
-    use EntityTrackingTrait;
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -42,6 +39,12 @@ class Cycles
      */
     #[ORM\ManyToMany(targetEntity: Departements::class, mappedBy: 'cycles')]
     private Collection $departements;
+
+    #[ORM\Column]
+    private ?int $capacite = 0;
+
+    #[ORM\Column]
+    private ?int $effectif = 0;
 
     public function __construct()
     {
@@ -136,6 +139,30 @@ class Cycles
         if ($this->departements->removeElement($departement)) {
             $departement->removeCycle($this);
         }
+
+        return $this;
+    }
+
+    public function getCapacite(): ?int
+    {
+        return $this->capacite;
+    }
+
+    public function setCapacite(int $capacite): static
+    {
+        $this->capacite = $capacite;
+
+        return $this;
+    }
+
+    public function getEffectif(): ?int
+    {
+        return $this->effectif;
+    }
+
+    public function setEffectif(int $effectif): static
+    {
+        $this->effectif = $effectif;
 
         return $this;
     }

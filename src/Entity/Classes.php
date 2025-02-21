@@ -22,9 +22,6 @@ use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 class Classes
 {
-    use CreatedAtTrait;
-    use SlugTrait;
-    use EntityTrackingTrait;
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]

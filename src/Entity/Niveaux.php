@@ -70,6 +70,12 @@ class Niveaux
     #[ORM\ManyToMany(targetEntity: Statuts::class, mappedBy: 'niveaux')]
     private Collection $statuts;
 
+    #[ORM\Column]
+    private ?int $capacite = 0;
+
+    #[ORM\Column]
+    private ?int $effectif = 0;
+
     public function __construct()
     {
         $this->classes = new ArrayCollection();
@@ -80,6 +86,11 @@ class Niveaux
         $this->scolarites1s = new ArrayCollection();
         $this->scolarites2s = new ArrayCollection();
         $this->statuts = new ArrayCollection();
+    }
+
+    public function __tostring()
+    {
+        return $this-> designation ?? '';
     }
 
     public function getId(): ?int
@@ -344,6 +355,30 @@ class Niveaux
         if ($this->statuts->removeElement($statut)) {
             $statut->removeNiveau($this);
         }
+
+        return $this;
+    }
+
+    public function getCapacite(): ?int
+    {
+        return $this->capacite;
+    }
+
+    public function setCapacite(int $capacite): static
+    {
+        $this->capacite = $capacite;
+
+        return $this;
+    }
+
+    public function getEffectif(): ?int
+    {
+        return $this->effectif;
+    }
+
+    public function setEffectif(int $effectif): static
+    {
+        $this->effectif = $effectif;
 
         return $this;
     }

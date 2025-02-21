@@ -46,10 +46,141 @@ $danger:#942c2c;
     height: 14px;
 }
 
+/* Appliquer une police de Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap');
+
+/*@import 'select2/dist/css/select2.css';*/
+
+
+/* Définir la police par défaut pour le corps du texte */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f0f4f8; /* Fond gris clair */
+    color: #333; /* Texte gris foncé */
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+/* Définir les polices des titres avec Open Sans */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Open Sans', sans-serif;
+    color: #2c3e50; /* Couleur gris foncé pour les titres */
+    font-weight: 600;
+}
+
+/* Paragraphe avec un espacement de ligne confortable */
+p {
+    margin-bottom: 1rem;
+    color: #555;
+}
+
+/* Liens */
+a {
+    text-decoration: none;
+    color: #3498db; /* Couleur bleue pour les liens */
+}
+
+a:hover {
+    color: #2980b9; /* Changement de couleur au survol */
+}
+
+/* Style pour le header */
+header {
+    background-color: #2c3e50; /* Fond sombre */
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+/* Style pour les boutons */
+button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+/* Style pour les cartes (card) */
+.card {
+    background-color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-10px); /* Effet de levée sur survol */
+}
+
+/* Footer style */
+footer {
+    background-color: #34495e;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Style pour les formulaires */
+form {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+form input, form select, form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+form button {
+    width: 100%;
+    background-color: #3498db;
+}
+
+/* Responsiveness pour les petits écrans */
+@media (max-width: 768px) {
+    body {
+        font-size: 16px; /* Taille de texte plus grande sur les petits écrans */
+    }
+
+    header, footer {
+        padding: 1rem 5%;
+    }
+}
+
+.table-sm td, .table-sm th {
+    padding: 0.25rem;  /* Réduit la taille des espaces internes */
+}
+
+.table-responsive {
+    margin-top: 20px;
+    overflow-x: auto;
+}
+
 /* Styles pour les cellules d'en-tête */
 .table th, .table td {
     padding: 8px; /* Espacement du contenu à l'intérieur des cellules */
     border: 1px solid #ccc; /* Bordures de la cellule */
+    vertical-align: middle;  /* Aligne le texte au centre verticalement */
 }
 
 /* Styles pour l'entête de la table */
@@ -57,3 +188,43 @@ $danger:#942c2c;
     background-color: #dddddd !important;
 }
 
+
+h1.text-primary {
+    margin-bottom: 10px;  /* Ajuste la valeur à tes besoins */
+}
+
+#limit {
+    height: auto; /* Laisse le navigateur ajuster la hauteur en fonction du contenu */
+}
+
+/* Ajoute ce CSS dans ton fichier de styles */
+.pagination {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+}
+
+.pagination li {
+    margin: 0 5px;
+}
+
+.pagination li a {
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #007bff;
+}
+
+.pagination li.active a {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+.pagination li.disabled a {
+    color: #6c757d;
+    pointer-events: none;
+    cursor: not-allowed;
+}

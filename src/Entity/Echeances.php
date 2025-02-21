@@ -15,9 +15,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ORM\Entity(repositoryClass: EcheancesRepository::class)]
 class Echeances
 {
-    use CreatedAtTrait;
-    use SlugTrait;
-    use EntityTrackingTrait;
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]

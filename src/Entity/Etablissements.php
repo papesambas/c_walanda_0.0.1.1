@@ -15,9 +15,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ORM\Entity(repositoryClass: EtablissementsRepository::class)]
 class Etablissements
 {
-    use CreatedAtTrait;
-    use SlugTrait;
-    use EntityTrackingTrait;
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -63,10 +60,10 @@ class Etablissements
     private ?Enseignements $enseignement = null;
 
     #[ORM\Column(nullable: true)]
-    private ?int $capacite = null;
+    private ?int $capacite = 0;
 
     #[ORM\Column(nullable: true)]
-    private ?int $effectif = null;
+    private ?int $effectif = 0;
 
     /**
      * @var Collection<int, Cycles>
@@ -85,6 +82,9 @@ class Etablissements
      */
     #[ORM\OneToMany(targetEntity: Users::class, mappedBy: 'etablissements')]
     private Collection $user;
+
+    #[ORM\Column(length: 255)]
+    private ?string $email = null;
 
     public function __construct()
     {
@@ -357,6 +357,18 @@ class Etablissements
                 $user->setEtablissements(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): static
+    {
+        $this->email = $email;
 
         return $this;
     }

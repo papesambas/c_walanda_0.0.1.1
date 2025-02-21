@@ -13,9 +13,6 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: EnseignementsRepository::class)]
 class Enseignements
 {
-    use CreatedAtTrait;
-    use SlugTrait;
-    use EntityTrackingTrait;
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -25,10 +22,10 @@ class Enseignements
     private ?string $designation = null;
 
     #[ORM\Column]
-    private ?int $capacite = null;
+    private ?int $capacite = 0;
 
     #[ORM\Column]
-    private ?int $effectif = null;
+    private ?int $effectif = 0;
 
     /**
      * @var Collection<int, Etablissements>
